@@ -1,58 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>{{meta_title}}</title>
-	<meta name="description" content="{{meta_description}}" />
+  <title>{{meta_title}}</title>
+  <meta name="description" content="{{meta_description}}" />
 
-	<meta name="HandheldFriendly" content="True" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="stylesheet" type="text/css" href="{{asset "css/dependencies.css"}}" />
-	<link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "css/dependencies.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset "css/sweetalert.css"}}" />
 
-	{{ghost_head}}
+  {{ghost_head}}
 </head>
 
 <body class="{{body_class}}">
-	<section id="wrapper">
-		<div id="ajax-container">
-			<nav id="nav" class="nav">
-				<div class="nav-logo">
-					<a href="{{@blog.url}}">
-						{{#if @blog.logo}}
-						<img src="{{@blog.logo}}" alt="Logo" />
-						{{else}}
-						<span class="name">{{@blog.title}}</span>
-						{{/if}}
-						
-					</a>
-				</div>
-				<div class="nav-menu">
-					<a class="rss" href="{{@blog.url}}/rss/"><i class="icon-rss"></i></a>
-					{{#if @blog.navigation}}
-					<a class="menu" data-action="menu" data-target="menu"><i class="icon-menu"></i></a>
-					{{/if}}
-				</div>
-			</nav>			
-			{{{body}}}
-			<div id="body-class" style="display: none;" class="{{body_class}}"></div>
-			<footer id="footer">
-				<section class="credits">
-					<span class="credits-theme">Theme <a href="https://github.com/zutrinken/bleak" target="_blank" rel="nofollow">Bleak</a> by <a href="http://zutrinken.com" target="_blank" rel="nofollow">zutrinken</a></span>
-					<span class="credits-software">Published with <a href="http://ghost.org" target="_blank" rel="nofollow">Ghost</a></span>
-				</section>
-			</footer>
-			{{#if @blog.navigation}}
-			{{navigation}}
-			{{/if}}
-		</div>
-	</section>
-	{{ghost_foot}}
-	
-	<script type="text/javascript" src="{{asset "js/dependencies.js"}}"></script>
-	<script type="text/javascript" src="{{asset "js/script.js"}}"></script>
+  <section id="wrapper">
+    <div id="ajax-container">
+      <nav id="nav" class="nav">
+        <div class="nav-logo">
+          <a href="{{@blog.url}}">
+            {{#if @blog.logo}}
+            <img src="{{@blog.logo}}" alt="Logo" />
+            {{else}}
+            <span class="name">{{@blog.title}}</span>
+            {{/if}}
+
+          </a>
+        </div>
+        <div class="nav-menu">
+          <a class="rss" href="{{@blog.url}}/rss/"><i class="icon-rss"></i></a>
+          {{#if @blog.navigation}}
+          <a class="menu" data-action="menu" data-target="menu"><i class="icon-menu"></i></a>
+          {{/if}}
+        </div>
+      </nav>
+      {{{body}}}
+      <div id="body-class" style="display: none;" class="{{body_class}}"></div>
+      <footer id="footer">
+        <section class="credits">
+          <span class="credits-theme">Theme <a href="https://github.com/zutrinken/bleak" target="_blank" rel="nofollow">Bleak</a> by <a href="http://zutrinken.com" target="_blank" rel="nofollow">zutrinken</a></span>
+          <span class="credits-software">Published with <a href="http://ghost.org" target="_blank" rel="nofollow">Ghost</a></span>
+        </section>
+      </footer>
+      {{#if @blog.navigation}}
+      {{navigation}}
+      {{/if}}
+    </div>
+  </section>
+  {{ghost_foot}}
+
+  <script type="text/javascript" src="{{asset "js/dependencies.js"}}"></script>
+  <script type="text/javascript" src="{{asset "js/script.js"}}"></script>
+  <script type="text/javascript" src="{{asset "js/sweetalert.min.js"}}"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC5TI6TgrUp9Nu4shtpfvI6oiUwgs-00rQ",
+      authDomain: "observatorio-rocketpin.firebaseapp.com",
+      databaseURL: "https://observatorio-rocketpin.firebaseio.com",
+      storageBucket: "",
+    };
+    var mainApp = firebase.initializeApp(config);
+  </script>
+
+  <script charset="utf-8">
+
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+    var callbackFunc = function(inputValue){
+      var host = window.location.host
+
+      // var onComplete = function(error) {
+      //   if (error) {
+      //     return swal.showInputError("Error de conexión");
+      //   } else {
+      //     return swal("Gracias por suscribirte!", "Te enviaremos noticias al email : " + inputValue, "success");
+      //   }
+      // };
+
+      if (inputValue === false)
+        return false;
+      if (inputValue === "") {
+        swal.showInputError("No haz ingresado tu email");
+        return false
+      }
+      if (!validateEmail(inputValue)){
+        swal.showInputError("Revisa el formato de tu email");
+        return false
+      }
+      // mainApp.auth()
+      // mainApp.database().ref('users/' + host).set({
+      //   email: inputValue
+      // }, onComplete);
+
+      // perform ajax call to save email
+      $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host } )
+      .done(function( data ) {
+        swal("Gracias por suscribirte!", "Te enviaremos noticias al email : " + inputValue, "success");
+      })
+      .fail(function() {
+        swal.showInputError("Error de conexión");
+      });
+    }
+  </script>
+
 </body>
 </html>
