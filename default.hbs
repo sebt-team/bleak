@@ -31,8 +31,16 @@
 
           </a>
         </div>
+        <div class="nav-logo">
+          <a href="#">
+            Ir a rocketpin.com
+          </a>
+        </div>
+
         <div class="nav-menu">
-          <a class="rss" href="{{@blog.url}}/rss/"><i class="icon-rss"></i></a>
+          <!-- <a class="rss" href="{{@blog.url}}/rss/">
+            <a class="rss" href="{{@blog.url}}/rss/"><i class="icon-rss"></i></a>
+          </a> -->
           {{#if @blog.navigation}}
           <a class="menu" data-action="menu" data-target="menu"><i class="icon-menu"></i></a>
           {{/if}}
@@ -60,13 +68,13 @@
   <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
   <script>
     // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyC5TI6TgrUp9Nu4shtpfvI6oiUwgs-00rQ",
-      authDomain: "observatorio-rocketpin.firebaseapp.com",
-      databaseURL: "https://observatorio-rocketpin.firebaseio.com",
-      storageBucket: "",
-    };
-    var mainApp = firebase.initializeApp(config);
+'    // var config = {
+    //   apiKey: "AIzaSyC5TI6TgrUp9Nu4shtpfvI6oiUwgs-00rQ",
+    //   authDomain: "observatorio-rocketpin.firebaseapp.com",
+    //   databaseURL: "https://observatorio-rocketpin.firebaseio.com",
+    //   storageBucket: "",
+    // };
+    // var mainApp = firebase.initializeApp(config);'
   </script>
 
   <script charset="utf-8">
@@ -101,14 +109,15 @@
       //   email: inputValue
       // }, onComplete);
 
+
       // perform ajax call to save email
       $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host } )
-      .done(function( data ) {
-        swal("Gracias por suscribirte!", "Te enviaremos noticias al email : " + inputValue, "success");
-      })
-      .fail(function() {
-        swal.showInputError("Error de conexión");
-      });
+      // .done(function( data ) {
+      swal("Gracias por suscribirte!", "Te enviaremos noticias al email : " + inputValue, "success");
+      // })
+      // .fail(function() {
+      //   swal.showInputError("Error de conexión");
+      // });
     }
   </script>
 
