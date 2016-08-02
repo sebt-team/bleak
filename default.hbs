@@ -32,7 +32,7 @@
           </a>
         </div>
         <div class="nav-logo">
-          <a href="#">
+          <a href="http://rocketpin.com" target="_blank">
             Ir a rocketpin.com
           </a>
         </div>
@@ -113,7 +113,7 @@
       // perform ajax call to save email
       $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host } )
       // .done(function( data ) {
-      swal("Gracias por suscribirte!", "Te enviaremos noticias al email : " + inputValue, "success");
+      swal("Recibido", "Enviaremos la información al email : " + inputValue, "success");
       // })
       // .fail(function() {
       //   swal.showInputError("Error de conexión");
