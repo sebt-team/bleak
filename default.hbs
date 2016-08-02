@@ -50,8 +50,7 @@
       <div id="body-class" style="display: none;" class="{{body_class}}"></div>
       <footer id="footer">
         <section class="credits">
-          <span class="credits-theme">Theme <a href="https://github.com/zutrinken/bleak" target="_blank" rel="nofollow">Bleak</a> by <a href="http://zutrinken.com" target="_blank" rel="nofollow">zutrinken</a></span>
-          <span class="credits-software">Published with <a href="http://ghost.org" target="_blank" rel="nofollow">Ghost</a></span>
+          <span class="credits-software">Powered by <a href="http://btechchile.com" target="_blank" rel="nofollow">Btech</a></span>
         </section>
       </footer>
       {{#if @blog.navigation}}
@@ -111,7 +110,7 @@
 
 
       // perform ajax call to save email
-      $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host } )
+      // $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host } )
       // .done(function( data ) {
       swal("Recibido", "Enviaremos la información al email : " + inputValue, "success");
       // })
