@@ -117,6 +117,7 @@
       // $.get( "localhost:5000/email/", { email: inputValue, domain: host } )
       // .done(function( data ) {
       swal("Recibido", "Gracias por descargar el estudio. Enviaremos más información al email : " + inputValue, "success");
+      console.log(pdfUrl)
       if(!(typeof pdfUrl === 'undefined') || !(pdfUrl === null)){
         setTimeout(function(){window.open(pdfUrl, '_blank');}, 1000);
       }
