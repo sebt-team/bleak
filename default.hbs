@@ -82,7 +82,7 @@
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
-    var callbackFunc = function(inputValue){
+    var callbackFunc = function(inputValue, pdfUrl=undefined){
       var host = window.location.host
 
       // var onComplete = function(error) {
@@ -115,7 +115,11 @@
       $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host, post_url: post_url, post_title:  post_title} )
       // $.get( "localhost:5000/email/", { email: inputValue, domain: host } )
       // .done(function( data ) {
-      swal("Recibido", "Enviaremos la información al email : " + inputValue, "success");
+      swal("Recibido", "Gracias por descargar el estudio. Enviaremos más información al email : " + inputValue, "success");
+      if(!(typeof pdfUrl === 'undefined') || !(pdfUrl === null)){
+        setTimeout(function(){window.open(pdfUrl, '_blank');}, 1000);
+      }
+
       // })
       // .fail(function() {
       //   swal.showInputError("Error de conexión");
