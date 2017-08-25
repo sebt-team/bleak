@@ -116,7 +116,7 @@
       // perform ajax call to save email
       var post_title = $('.post-title').text
       var post_url   = window.location.href
-      // $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host, post_url: post_url, post_title:  post_title} )
+      $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host, post_url: post_url, post_title:  post_title} )
       // $.get( "localhost:5000/email/", { email: inputValue, domain: host } )
       // .done(function( data ) {
       swal("Recibido", "Gracias por descargar el estudio. Enviaremos más información al email : " + inputValue, "success");
