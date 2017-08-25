@@ -119,7 +119,7 @@
       $.get( "https://btech-services.herokuapp.com/email/", { email: inputValue, domain: host, post_url: post_url, post_title:  post_title} )
       // $.get( "localhost:5000/email/", { email: inputValue, domain: host } )
       // .done(function( data ) {
-      swal("Recibido", "Gracias por descargar el estudio. Enviaremos más información al email : " + inputValue, "success");
+      swal("Recibido", "Gracias por descargar el estudio.", "success");
       pdfUrl = $('#pdfUrl').text()
       console.log(pdfUrl)
       if(!(typeof pdfUrl === 'undefined')){
